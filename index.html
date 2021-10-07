@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<style type="text/css">
+body{background:rgb(121,128,128)}
+h2{text-align:center;
+padding:10px 0px;
+color:blue;
+text-shadow:1px 1px 2px #fff}
+.main{width:250px;
+height:200px;
+margin:50px auto;
+box-sizing:border-box;
+text-align:center;
+background:rgb(174,61,220);
+border-radius:5px;
+border:2px solid black;
+box-shadow:2px 2px 4px rgb(244,241,244);
+padding:10px;
+color:#fff;
+transition:.5s
+
+}
+
+
+.main:hover{
+box-shadow:2px 2px 4px rgb(92,159,255);
+
+}
+table{width:100%;
+margin:20px 0px;
+
+
+}
+input{width:90px;
+outline:none;
+border:2px solid blue;
+border-radius:4px;
+font-weight:bold;
+padding:5px;
+text-align:center;
+cursor:pointer;
+box-sizing:border-box;
+transition:1s;
+}
+#result{background:#fff;
+color:#000}
+
+
+input:hover{
+
+box-shadow:1px 1px 2px rgb(118,255,151),-1px -1px 2px rgb(118,255,151)
+}
+
+select{padding:3px;
+border-radius:3px;
+border:1px solid green;
+outline:none;
+cursor:pointer;
+background:pink;
+transition:.5s
+}
+
+select:hover{
+
+box-shadow:1px 1px 2px rgb(118,255,151),-1px -1px 2px rgb(118,255,151)
+}
+
+#notice{
+font-size:12px;
+display:inline-block;
+color:red;
+padding:3px;
+border-radius:2px;
+border:1px solid red;
+background:#fff;
+display:none
+}
+
+
+
+</style>
+</head>
+<body>
+<h2>Base Convertor</h2>
+<div class="main">
+  <table>
+    <tr>
+      <th>Convert From</th>
+      <th>To</th>
+    </tr>
+    <tr>
+    <td>
+      <select id="fromValue">
+        <option>Binary</option>
+        <option>Decimal</option>
+        <option>Octal</option>
+        <option>Hexadecimal</option>
+      </select>
+    </td>
+    <td>
+      <select id="toValue">
+      <option>Decimal</option>
+      <option>Binary</option>
+      <option>Octal</option>
+      <option>Hexadecimal</option>
+      </select>
+    </td>
+    </tr>
+   </table>
+   <table>
+    <tr>
+      <th>Enter Number</th>
+      <th>Result</th>
+    </tr>
+    <tr>
+      <td><input type="text" id="myInput" oninput="fn()"></td>
+      <td><input type="text" id="result" oninput="fn()" disabled></td>
+    </tr>
+    <tr>
+    <td><span id="notice">Input is Invalid..!</span></td>
+    <td></td>
+    </tr>
+  </table>
+</div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+var toValue = document.getElementById("toValue");
+var fromValue = document.getElementById("fromValue");
+var myInput = document.getElementById("myInput");
+var result = document.getElementById("result");
+
+
+function binaryNum(){
+if(myInput.value==2 || myInput.value==3 || myInput.value==4 || myInput.value==5 || myInput.value==6 || myInput.value==7 || myInput.value==8 || myInput.value==9){
+$("#notice").fadeIn(700)
+}
+else{
+
+$("#notice").hide()
+}
+
+}
+
+function octalNum(){
+if(myInput.value==8 || myInput.value==9){
+$("#notice").fadeIn(700)
+}
+
+else{
+$("#notice").hide();
+
+}
+}
+
+
+
+
+
+
+function fn(){
+
+
+if(fromValue.value == "Binary" && toValue.value == "Decimal"){
+result.value = parseInt(myInput.value,2).toString(10);
+binaryNum();
+}
+
+if(fromValue.value == "Binary" && toValue.value == "Octal"){
+result.value = parseInt(myInput.value,2).toString(8);
+binaryNum();
+}
+
+if(fromValue.value == "Binary" && toValue.value == "Hexadecimal"){
+result.value = parseInt(myInput.value,2).toString(16).toUpperCase();
+binaryNum()
+}
+
+if(fromValue.value == "Decimal" && toValue.value == "Binary"){
+result.value = parseInt(myInput.value,10).toString(2);
+}
+
+if(fromValue.value == "Decimal" && toValue.value == "Octal"){
+result.value = parseInt(myInput.value,10).toString(8);
+}
+
+if(fromValue.value == "Decimal" && toValue.value == "Hexadecimal"){
+result.value = parseInt(myInput.value,10).toString(16).toUpperCase();
+}
+
+if(fromValue.value == "Octal" && toValue.value == "Binary"){
+result.value = parseInt(myInput.value,8).toString(2);
+octalNum()
+}
+
+if(fromValue.value == "Octal" && toValue.value == "Decimal"){
+result.value = parseInt(myInput.value,8).toString(10);
+octalNum()
+}
+
+if(fromValue.value == "Octal" && toValue.value == "Hexadecimal"){
+result.value = parseInt(myInput.value,8).toString(16).toUpperCase();
+octalNum()
+}
+
+if(fromValue.value == "Hexadecimal" && toValue.value == "Binary"){
+result.value = parseInt(myInput.value,16).toString(2);
+}
+
+if(fromValue.value == "Hexadecimal" && toValue.value == "Decimal"){
+result.value = parseInt(myInput.value,16).toString(10);
+}
+
+if(fromValue.value == "Hexadecimal" && toValue.value == "Octal"){
+result.value = parseInt(myInput.value,16).toString(8);
+}
+
+if(myInput.value==""){
+result.value=""
+}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
